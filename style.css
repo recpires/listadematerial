@@ -1,0 +1,353 @@
+/* --- Variáveis --- */
+:root {
+  --primary-blue: #002f5d;
+  --accent-teal: #009ca6;
+  --accent-gold: #f4c430;
+  --bg-light: #f4f7f9;
+  --white: #ffffff;
+  --sidebar-bg: #e9ecef;
+  --text-dark: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* --- Header --- */
+.main-header {
+  background-color: var(--white);
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.header-logo {
+  width: 500px; /* Tamanho fixo solicitado */
+  max-width: 90%; /* Responsividade para celulares */
+  height: auto;
+}
+
+/* --- Layout Principal (Sidebar + Content) --- */
+.app-container {
+  display: flex;
+  min-height: calc(100vh - 150px);
+  max-width: 1400px;
+  margin: 2rem auto;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  width: 280px;
+  background-color: var(--primary-blue);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grade-nav {
+  padding: 1rem;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.group-title {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin: 1.5rem 0 0.5rem 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 5px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: translateX(5px);
+}
+
+.nav-btn.active {
+  background-color: var(--accent-teal);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Área de Conteúdo --- */
+.content-area {
+  flex-grow: 1;
+  padding: 2.5rem;
+  overflow-y: auto;
+  background-color: #fafafa;
+}
+
+/* Componentes do Conteúdo Dinâmico */
+.grade-header {
+  border-bottom: 3px solid var(--accent-teal);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.grade-title {
+  font-size: 2.5rem;
+  color: var(--primary-blue);
+}
+
+.grade-total {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-top: 0.5rem;
+  background: #e0f7fa;
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* Tabela de Livros */
+.books-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 3rem;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.books-table th {
+  background-color: var(--primary-blue);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+}
+
+.books-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.books-table tr:last-child td {
+  border-bottom: none;
+}
+.price-col {
+  font-weight: 700;
+  color: var(--primary-blue);
+  width: 150px;
+  text-align: right;
+}
+
+/* Lista de Papelaria (Checklist) */
+.stationery-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.check-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.check-item:hover {
+  border-color: var(--accent-teal);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.check-item input {
+  margin-right: 15px;
+  transform: scale(1.5);
+  accent-color: var(--accent-teal);
+}
+
+.check-item.checked {
+  background-color: #e8f5e9;
+  border-color: #c8e6c9;
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Seção Higiene Fixa */
+.hygiene-section {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px dashed #ccc;
+}
+.hygiene-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.hygiene-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid var(--accent-gold);
+}
+.hygiene-card ul {
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .app-container {
+    flex-direction: column;
+    margin: 0;
+    border-radius: 0;
+  }
+  .sidebar {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .grade-nav {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+  }
+  .nav-group {
+    min-width: 200px;
+  }
+  .hygiene-grid {
+    grid-template-columns: 1fr;
+  }
+  .header-logo {
+    width: 300px;
+  }
+}
+
+/* WhatsApp */
+.whatsapp-btn {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  z-index: 100;
+  transition: transform 0.3s;
+}
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+}
+.footer-note {
+  text-align: center;
+  padding: 2rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* --- Botão de Download PDF na Sidebar --- */
+
+/* Ajusta a sidebar para empurrar o rodapé para o final */
+.sidebar {
+  /* Certifique-se que estas propriedades já existem ou adicione-as */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Garante que o footer vá para baixo */
+}
+
+.sidebar-footer {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.1); /* Fundo sutilmente mais escuro */
+  margin-top: auto; /* Força o elemento para o final do container flex */
+}
+
+.download-pdf-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #ff4b4b; /* Vermelho vibrante para destaque */
+  color: white;
+  text-decoration: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.download-pdf-btn:hover {
+  background-color: #ff1f1f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.download-pdf-btn i {
+  font-size: 1.2rem;
+}
+
+/* Ajuste Mobile: Garante que o botão apareça bem no celular */
+@media (max-width: 900px) {
+  .sidebar-footer {
+    margin-top: 0;
+    border-top: none;
+    border-bottom: 1px solid #ddd;
+    background: white; /* No mobile a sidebar fica branca ou clara */
+  }
+
+  .download-pdf-btn {
+    background-color: var(
+      --primary-blue
+    ); /* No mobile pode ser azul para combinar */
+  }
+}
